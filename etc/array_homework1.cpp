@@ -6,7 +6,7 @@ int main(){
 
     for(int i = 0; i < 100; i++){ // 100개의 정수를 생성해야하므로
 
-        int K = rand() % 100;
+        int K = rand();
 
         if(K == 0) continue; // 만약 생성 된 난수가 0이면 다음 루프
 
