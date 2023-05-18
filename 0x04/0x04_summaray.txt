@@ -39,3 +39,10 @@ struct NODE {
     struct NODE *prev, *next;
     int data;
 }
+
+4. 야매 연결리스트
+0x04_linked_list_test.cpp 참고
+
+5. STL List
+선언 list<자료형> 이름;
+메소드는 벡터와 비슷함
