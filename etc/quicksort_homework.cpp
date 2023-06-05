@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace ::std;
 
-void quicksort(struct Sungjuk* sj, int l, int r); // 내림차순으로 정렬해주는 퀵소트 (구조체인자, 좌측 idx, 우측 idx)
+void quicksort(struct Sungjuk* sj, int l, int r); // 오름차순으로 정렬해주는 퀵소트 (구조체인자, 좌측 idx, 우측 idx)
 int partition(struct Sungjuk* sj, int l, int r);
-// void reverse(struct Sungjuk* sj, int start, int end, int ammount); // 구조체 배열 sj의 순서를 역으로 돌려주는 함수(사용 안 함)
+void reverse(struct Sungjuk* sj, int start, int end, int ammount); // 구조체 배열 sj의 순서를 역으로 돌려주는 함수
 
 struct Sungjuk // 성적 저장하는 구조체 선언
     {
@@ -17,7 +17,7 @@ int main(){
     Sungjuk sj[10] = { {"2023216026", 100, 100, 100}, {"2023216239", 80, 93, 78}, {"2023216357", 70, 80, 84}, {"2023216232", 65, 28, 72}, {"2023216854", 90, 85, 83}, {"2023216952", 83, 72, 94}, {"2023216651", 82, 84, 85}, {"2023216942", 91, 94, 63}, {"2023216254", 69, 53, 84}, {"2023216992", 96, 94, 92} }; // 구조체 배열 선언
     
     quicksort(sj, 0, 10); // 퀵소트 함수 시작
-    // reverse(sj, 0, 9, 10); (사용 안 함)
+    reverse(sj, 0, 9, 10); // 오름차순 -> 내림차순으로 변경
 
     cout << "아래 기능 중 한 가지를 선택 해주세요" << "\n" << "(1) 전체 정렬된 데이터 보기 " << "(2) 검색하기" << '\n';
 
@@ -74,7 +74,7 @@ int partition(struct Sungjuk* sj, int l, int r){
     int i = l - 1;
 
     for(int j = l; j <= r-1; j++){
-        if(strcmp(sj[j].hakbun, sj[r].hakbun) >= 0){ // 인티저형일때 sj[j].hakbun <= sj[r].hakbun
+        if(strcmp(sj[j].hakbun, sj[r].hakbun) <= 0){ // 인티저형일때 sj[j].hakbun <= sj[r].hakbun
             i++;
             swap(sj[i], sj[j]); // STL 함수(두 변수의 값을 상호교환 해주는 함수)
         }
@@ -86,11 +86,10 @@ int partition(struct Sungjuk* sj, int l, int r){
 
 }
 
-/*
+
 void reverse(struct Sungjuk* sj, int start, int end, int ammount){
     for(int i = 0; i < ammount/2; i++){
         swap(sj[start++], sj[end--]);
     }
 
 }
-*/
